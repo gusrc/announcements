@@ -3,7 +3,7 @@ class Announcement < ActiveRecord::Base
   validates_presence_of :body
   
   def self.newest
-	Announcement.last
+	  Announcement.last
   end
   
   def self.newest_private
