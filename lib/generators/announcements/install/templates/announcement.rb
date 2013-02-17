@@ -1,5 +1,7 @@
 class Announcement < ActiveRecord::Base
 
+  before_create :set_default_times
+
   validates_presence_of :body
   
   def self.newest
@@ -13,5 +15,12 @@ class Announcement < ActiveRecord::Base
   def self.newest_public
     Announcement.where("type = 'public'").order("id desc").first
   end
+
+  private
+
+    def set_default_times
+      visible_at ||= Time.now
+      invisible_at ||= nil
+    end
   
 end

@@ -5,6 +5,6 @@ class Announcement
   attr_accessor :invisible_at
 
   def initialize
-  	@visible_at = Time.now
+  	@visible_at ||= Time.now
   end
 end
