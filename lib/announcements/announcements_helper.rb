@@ -12,7 +12,7 @@ module AnnouncementsHelper
   # alert_heading -- Adding an alert heading when used with the bootstrap option.
   def announce announcement, options = {}
     result = nil
-    data_attribute = { :announcementid => announcement.id }
+    data_attribute = { :announcementid => announcement.id } unless announcement.nil?
 
     if announcement != nil && cookies["announcement_" + announcement.id.to_s] != "hidden"
       if options[:format] == "bootstrap"
