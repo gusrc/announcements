@@ -44,6 +44,12 @@ describe AnnouncementsHelper do
     output.should include("<h4 class=\"alert-heading\"")
   end
 
+  it "should output nil if no announcement is found" do
+    @announcement = nil
+    output = announce(@announcement)
+    output.should be_nil
+  end
+
   it "should set nil as default invisible_at time" do
     @announcement.invisible_at.should be_nil
   end
@@ -81,4 +87,5 @@ describe AnnouncementsHelper do
     output = announce(@announcement)
     output.should include "announcement text"
   end
+
 end
