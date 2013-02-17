@@ -12,8 +12,6 @@ describe AnnouncementsHelper do
     @announcement = Announcement.new
     @announcement.id = 1
     @announcement.body = "announcement text"
-    # @announcement.visible_at = Time.now
-    # @announcement.invisible_at = Time.now + 1.week
     
     @mocked_cookies = Hash.new
     stub!(:cookies).and_return(@mocked_cookies)
