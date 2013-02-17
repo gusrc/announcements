@@ -3,9 +3,11 @@ class Announcement < ActiveRecord::Base
   before_create :set_default_times
 
   validates_presence_of :body
+
+  attr_accessible :body, :visible_at, :invisible_at
   
   def self.newest
-	  Announcement.last
+    Announcement.where("visible_at <= ? AND (invisible_at is null OR invisible_at >= ?)", Time.now, Time.now).last
   end
   
   def self.newest_private
@@ -19,8 +21,8 @@ class Announcement < ActiveRecord::Base
   private
 
     def set_default_times
-      visible_at ||= Time.now
-      invisible_at ||= nil
+      self.visible_at ||= Time.now
+      self.invisible_at ||= nil
     end
   
 end

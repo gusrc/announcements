@@ -15,7 +15,6 @@ module AnnouncementsHelper
     data_attribute = { :announcementid => announcement.id } unless announcement.nil?
 
     if announcement != nil && cookies["announcement_" + announcement.id.to_s] != "hidden"
-      if announcement.visible_at <= Time.now && ( announcement.invisible_at.nil? || announcement.invisible_at >= Time.now )
         if options[:format] == "bootstrap"
           text = options[:hide_message] || "x"
           div_class = options[:div_class] || "alert alert-block"
@@ -33,7 +32,6 @@ module AnnouncementsHelper
 
           result = content_tag(:div, announcement.body.html_safe + close_content_tag, class: div_class)
         end
-      end
     end
 
     result
