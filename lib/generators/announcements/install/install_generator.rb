@@ -18,7 +18,7 @@ module Announcements
 			template "announcements.js.coffee", "app/assets/javascripts/announcements.js.coffee"
 			say "--- Adding require in app/assets/javascripts/application.js..."
 			insert_into_file "app/assets/javascripts/application.js", "//= require announcements\n", :after => "jquery_ujs\n"
-			say "--- IMPORTANT: New asset was added in the vendor folder; you have to precompile assets for production!"
+			say "--- IMPORTANT: New asset was added in the app/assets folder; you have to precompile assets for production!"
 		end
 				
 	end
