@@ -15,7 +15,7 @@ there is a single helper method which you can customise) and is a bit more flexi
 
 ## For Turbolinks users
 
-If you are using Turbolinks, clicking the close link will only work on the first page load and not subsequent pages when following Turbolinks enabled links. To solve this, you will need to use the `jquery-turbolinks` gem and move the `//= require announcements` line in your app/assets/javascripts/application.js file after the `//= require jquery.turbolinks` line. Otherwise 
+If you are using Turbolinks, clicking the close link will only work on the first page load and not subsequent pages when following Turbolinks enabled links. To solve this, you will need to use the `jquery-turbolinks` gem and move the `//= require announcements` line in your app/assets/javascripts/application.js file after the `//= require jquery.turbolinks` line.  
 
 ## Styling
 
