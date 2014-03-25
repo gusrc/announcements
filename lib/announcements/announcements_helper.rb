@@ -12,15 +12,15 @@ module AnnouncementsHelper
   # alert_heading -- Adding an alert heading when used with the bootstrap option.
   def announce announcement, options = {}
     result = nil
-    data_attribute = { :announcementid => announcement.id } unless announcement.nil?
 
     if announcement != nil && cookies["announcement_" + announcement.id.to_s] != "hidden"
+      data_attribute = { :announcementid => announcement.id }
       if options[:format] == "bootstrap"
         text = options[:hide_message] || "x"
-        div_class = options[:div_class] || "alert alert-block"
-        alert_heading = options[:alert_heading] || "Warning!"
+        div_class = options[:div_class] || "alert alert-warning"
+        alert_heading = announcement.try(:heading) || options[:alert_heading] || "Warning!"
 
-        close_content_tag = content_tag(:a, text.html_safe, :class => "close", data: data_attribute)
+        close_content_tag = content_tag(:a, text, :class => "close", data: data_attribute)
         alert_content_tag = content_tag(:h4, alert_heading, :class => "alert-heading")
 
         result = content_tag(:div, close_content_tag + alert_content_tag + announcement.body.html_safe, class: div_class)
